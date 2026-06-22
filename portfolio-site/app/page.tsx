@@ -15,7 +15,7 @@ export default function Page() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div id='home' className="min-h-screen">
       <ClientParticles />
 
       <div className="relative z-10 pointer-events-none">
@@ -31,7 +31,7 @@ export default function Page() {
           </p>
           <div className="mt-10 w-full">
             <p className="italic font-stretch-200% mx-auto md:w-2/3 lg:w-1/2 pb-0 py-1 pt-10">
-            These are the tools i use
+            These are the tools I use
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
             {technologies.map((tech) => {
