@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ModeToggle } from './mode-toggle'
 import {User, Home, FolderOpen, GraduationCap, Mail } from 'lucide-react'
 
 
 const navLinks = [
-  { label: 'Home', href: '#home', icon: Home },
+  { label: 'Home', href: '/', icon: Home },
   { label: 'About', href: '#about', icon: User },
   { label: 'Projects', href: '#projects', icon: FolderOpen },
   { label: 'Education', href: '#education', icon: GraduationCap },
@@ -16,6 +16,29 @@ const navLinks = [
 const Navbar = () => {
 
   const [activeLink, setActiveLink] = useState('/')
+
+  useEffect(() => {
+  const updateActiveLink = () => {
+    const hash = window.location.hash
+
+    if (hash) {
+      setActiveLink(hash)
+    } else {
+      setActiveLink('/')
+    }
+  }
+
+  updateActiveLink()
+
+  window.addEventListener('hashchange', updateActiveLink)
+
+  return () => {
+    window.removeEventListener('hashchange', updateActiveLink)
+  }
+}, [])
+  
+
+  
 
   return (
     <nav className='fixed top-13 left-2 right-2 z-50 w-fit mx-auto rounded-full border border-border bg-background/70 shadow-xl/30 px-0 md:px-0 py-2 backdrop-blur-sm'>
@@ -28,7 +51,6 @@ const Navbar = () => {
               <a 
               href={href}
               aria-label={href}
-              onClick={() => setActiveLink(href)}
               className={`flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out md:h-auto md:w-auto md:px-2 md:py-1
               ${isActive 
               ? 'scale-105 bg-accent text-accent-foreground'
