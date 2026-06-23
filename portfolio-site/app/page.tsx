@@ -50,7 +50,7 @@ export default function Page() {
         <h1 className="text-4xl font-black md:text-7xl">Gonçalo Costa</h1>
 
         <p className="mt-4 text-lg">
-          I'm a <span className="font-extrabold">Junior Frontend Developer</span> from{" "}
+          I'm a <span className="font-extrabold">FullStack Engineer</span> from{" "}
           <span className="font-extrabold">Portugal</span> with a passion for creating beautiful
           and functional web applications. I specialize in{" "}
           <span className="font-extrabold">React, Next.js and TypeScript</span>, and I'm always
