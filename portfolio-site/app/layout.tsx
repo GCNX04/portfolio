@@ -1,18 +1,20 @@
+'use client'
 import { Geist, Geist_Mono } from "next/font/google"
-
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/mode-toggle";
 import Navbar from "@/components/Navbar";
-import Particles from "@/components/Particles";
+import { usePathname } from "next/navigation";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+
 
 export default function RootLayout({
   children,
@@ -26,11 +28,13 @@ export default function RootLayout({
       className={cn("dark", "antialiased", fontMono.variable, "font-sans", geist.variable)}
     >
       <body suppressHydrationWarning>
-
-        <ThemeProvider>{children}</ThemeProvider>
-         
-      
+        <ThemeProvider>
+        <Navbar/>
+        {children}
+        </ThemeProvider>
       </body>
     </html>
   )
 }
+
+

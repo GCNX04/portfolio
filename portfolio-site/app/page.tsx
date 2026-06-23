@@ -1,5 +1,4 @@
 import Navbar from "@/components/Navbar"
-import ClientParticles from "@/components/client-particles"
 import { Badge }  from "@/components/ui/badge"
 import { SiReact, SiTypescript, SiShadcnui, SiNextdotjs, SiTailwindcss, SiSupabase} from "react-icons/si"
 
@@ -15,12 +14,9 @@ export default function Page() {
   ]
 
   return (
-    <div id='home' className="min-h-screen">
-      <ClientParticles />
-
+    <main className="container mx-auto flex h-screen flex-col items-center justify-center px-6 text-center">
       <div className="relative z-10 pointer-events-none">
         <div className="pointer-events-auto">
-          <Navbar />
         </div>
         <div className="container mx-auto flex h-screen flex-col items-center justify-center px-6 text-center">
           <h1 className="text-4xl font-black md:text-7xl">
@@ -52,6 +48,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
