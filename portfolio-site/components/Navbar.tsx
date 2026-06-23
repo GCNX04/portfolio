@@ -1,46 +1,45 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { ModeToggle } from './mode-toggle'
-import {ShieldCheck, Home, FolderOpen, GraduationCap, Mail } from 'lucide-react'
+import { ModeToggle } from './ui/mode-toggle'
+import { ShieldCheck, Home, FolderOpen, GraduationCap, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-
+import { motion } from 'framer-motion'
 
 const navLinks = [
   { label: 'Home', href: '/', icon: Home },
-  { label: 'Certificates', href: '/about', icon: ShieldCheck },
+  { label: 'Certificates', href: '/certificates', icon: ShieldCheck },
   { label: 'Projects', href: '/projects', icon: FolderOpen },
   { label: 'Contact', href: '/contact', icon: Mail },
 ]
 
 const Navbar = () => {
-
-  const pathname = usePathname()  
-  
+  const pathname = usePathname()
 
   return (
-    <nav className='fixed top-13 left-2 right-2 z-50 w-fit mx-auto rounded-full border border-border bg-background/70 shadow-xl/30 px-0 md:px-0 py-2 backdrop-blur-sm'>
-      <ul className='flex items-center gap-4 md:gap-4 lg:gap-1 rounded-full px-2 md:px-5 py-2 md:py-1 text-[5px] md:text-base'>
+    <nav className='fixed top-12 left-1/2 -translate-x-1/2 z-50 w-fit rounded-full border border-border bg-background/70 shadow-xl px-2 py-2 backdrop-blur-sm'>
+      <ul className='flex items-center gap-2 rounded-full px-2 py-1 text-base'>
         {navLinks.map(({ label, href, icon: Icon }) => {
-          const isActive = pathname === href
+          const isActive = href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/')
 
           return (
-            <li key={href} className="px-1 md:px-3 py-1 hover:text-neutral-400">
-              <Link
-              href={href}
-              aria-label={href}
-              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-out md:h-auto md:w-auto md:px-2 md:py-1
-              ${isActive 
-              ? 'scale-105 bg-accent text-accent-foreground'
-              : 'scale-100 text-muted-foreground hover:text-foreground'
-              }`}>
+            <li key={href} className="relative px-1 py-1">
+              <Link 
+                href={href} 
+                aria-label={label} 
+                className={`relative z-10 flex h-9 items-center justify-center rounded-full px-4 py-1`}>
                 <Icon className='h-5 w-5 md:h-4 md:w-4' />
                 <span className="hidden md:inline ml-2">{label}</span>
               </Link>
+              
+              {isActive && (
+                <motion.div layoutId="active-pill" className="absolute inset-0 z-0 rounded-full bg-accent"transition={{ type: 'spring', stiffness: 380, damping: 30 }}/>
+              )}
             </li>
-)})}
-        <li><ModeToggle /></li>
+          )
+        })}
+        <li className="relative z-10 ml-2"><ModeToggle /></li>
       </ul>
     </nav>
   )
