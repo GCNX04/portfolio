@@ -3,6 +3,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
+import { ViewTransitions } from 'next-view-transitions';
 
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
@@ -20,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    <ViewTransitions>
     <html
       lang="en"
       suppressHydrationWarning
@@ -32,6 +34,7 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ViewTransitions>
   )
 }
 

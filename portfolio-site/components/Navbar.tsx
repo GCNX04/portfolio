@@ -6,16 +6,19 @@ import { ShieldCheck, Home, FolderOpen, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTransitionRouter } from 'next-view-transitions'
+import { getPageAnimation } from '@/lib/animations'
 
 const navLinks = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'Certificates', href: '/certificates', icon: ShieldCheck },
   { label: 'Projects', href: '/projects', icon: FolderOpen },
-  { label: 'Contact', href: '/contact', icon: Mail },
 ]
 
 const Navbar = () => {
+  const router =  useTransitionRouter()
   const pathname = usePathname()
+
 
   return (
     <nav className='fixed top-12 left-1/2 -translate-x-1/2 z-50 w-fit rounded-full border border-border bg-background/70 shadow-xl px-2 py-2 backdrop-blur-sm'>
@@ -26,7 +29,10 @@ const Navbar = () => {
           return (
             <li key={href} className="relative px-1 py-1">
               <Link 
-                href={href} 
+                href={href}
+                onClick={(e) => {e.preventDefault()
+                  router.push(href, {onTransitionReady: getPageAnimation(pathname, href),})
+                }} 
                 aria-label={label} 
                 className={`relative z-10 flex h-9 items-center justify-center rounded-full px-4 py-1`}>
                 <Icon className='h-5 w-5 md:h-4 md:w-4' />

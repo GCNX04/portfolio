@@ -33,7 +33,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex flex-col divide-y divide-chart-2/50 border-y border-chart-2/50">
+        <div className="flex flex-col divide-y divide-accent/70 border-y border-accent/70">
           {certificates.map((certificate) => (
             <Link
               href={certificate.href}
