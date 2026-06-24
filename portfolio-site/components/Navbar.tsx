@@ -34,13 +34,13 @@ const Navbar = () => {
                   router.push(href, {onTransitionReady: getPageAnimation(pathname, href),})
                 }} 
                 aria-label={label} 
-                className={`relative z-10 flex h-9 items-center justify-center rounded-full px-4 py-1`}>
+                className={`relative z-10 flex h-9 items-center justify-center rounded-full px-4 py-1 transition-colors duration-200 ${isActive ? 'text-accent-foreground' : 'text-foreground/80'} hover:text-accent-foreground`}>
                 <Icon className='h-5 w-5 md:h-4 md:w-4' />
                 <span className="hidden md:inline ml-2">{label}</span>
               </Link>
               
               {isActive && (
-                <motion.div layoutId="active-pill" className="absolute inset-0 z-0 rounded-full bg-accent"transition={{ type: 'spring', stiffness: 380, damping: 30 }}/>
+                <motion.div layoutId="active-pill" className="absolute inset-0 z-0 rounded-full bg-accent" transition={{ type: 'spring', stiffness: 380, damping: 30 }}/>
               )}
             </li>
           )
