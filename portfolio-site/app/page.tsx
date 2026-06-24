@@ -31,8 +31,17 @@ export default function Page() {
 
   const socialLinks = [
     { icon: SiGithub, label: "GitHub", href: "https://github.com/GCNX04" },
-    { icon: FaLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/gon%C3%A7alo-costa-a6182a3aa/" },
-    { icon: FileText, label: "CV", href: "/cv.pdf" },
+    {
+      icon: FaLinkedin,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/gon%C3%A7alo-costa-a6182a3aa/",
+    },
+    {
+      icon: FileText,
+      label: "CV",
+      href: "/Goncalo_Costa_CV.pdf",
+      download: "Goncalo_Costa_CV.pdf",
+    },
   ]
 
   return (
@@ -59,12 +68,13 @@ export default function Page() {
 
         {/* Social links */}
         <div className="mt-4 mb-8 flex items-center divide-x divide-muted-foreground/40">
-          {socialLinks.map(({ icon: Icon, label, href }) => (
+          {socialLinks.map(({ icon: Icon, label, href, download }) => (
             <a
               key={label}
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={download ? undefined : "_blank"}
+              rel={download ? undefined : "noopener noreferrer"}
+              download={download}
               aria-label={label}
               className="px-3 py-1 text-muted-foreground transition-colors first:pl-0 last:pr-0 hover:text-foreground"
             >
