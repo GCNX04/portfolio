@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { ModeToggle } from './ui/mode-toggle'
-import { ShieldCheck, Home, FolderOpen, GraduationCap, Mail } from 'lucide-react'
+import { ShieldCheck, Home, FolderOpen, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'

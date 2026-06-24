@@ -57,8 +57,8 @@ export default function Page() {
           eager to learn new technologies and improve my skills.
         </p>
 
-         {/* Social links */}
-         <div className="mt-4 mb-8 flex items-center gap-4">
+        {/* Social links */}
+        <div className="mt-4 mb-8 flex items-center divide-x divide-muted-foreground/40">
           {socialLinks.map(({ icon: Icon, label, href }) => (
             <a
               key={label}
@@ -66,7 +66,7 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="px-3 py-1 text-muted-foreground transition-colors first:pl-0 last:pr-0 hover:text-foreground"
             >
               <Icon size={22} />
             </a>
